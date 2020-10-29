@@ -1,1 +1,293 @@
-/* Add application styles & imports to this file! */
+/* You can add global styles to this file, and also import other style files */
+:root {
+  --bg-light: #ffffff;
+  --bg-dark: #ffffff;
+  --search-border-color: black;
+  --search-bar-color: white;
+  --search-button-color: #545454;
+  --title-color: black;
+  --title-accent-color: #000000;
+  --footer-color: #141414;
+  --session-block: #000000;
+  --session-block-hover: #525252e3;
+  --session-clash: #ff3300;
+  --session-editing: #c4cfe0cc;
+  --calendar-label: black;
+  --block-text: white;
+  --accent-color: transparent;
+  --class-list-bg: #525252;
+  --class-list-color: white;
+  --bg-label: #000000;
+  --control-button-color: black;
+  --timetable-button-bg: #000000;
+  --timetable-button-color: white;
+  --timetable-stripes-light: rgba(0, 0, 0, 0.13);
+  --timetable-stripes-dark: rgba(0, 0, 0, 0.1);
+  --add-timetable-button-bg: #000000;
+  --add-timetable-button-color: white;
+  --donate-btn-color: rgba(255, 255, 255, 0.65);
+  --donate-btn-hover: rgba(255, 255, 255, 0.8);
+  --success-toast-bg: #1a791f;
+  --error-toast-bg: #c14343;
+  --sidebar-width: 185px;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0px;
+  font-family: 'Lato', Arial, sans-serif;
+  color: white;
+  background: var(--bg-light);
+  position: relative;
+}
+
+* {
+  transition: var(--global-transitions);
+}
+
+input:focus {
+  outline: none;
+}
+
+button:focus {
+  outline: none;
+}
+
+button {
+  font-family: 'Lato', Arial, sans-serif;
+}
+
+textarea:focus {
+  outline: none;
+}
+
+.tooltip {
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 6px;
+  white-space: nowrap;
+  font-size: 9px;
+  color: rgba(255, 255, 255, 0.4);
+  position: absolute;
+  transform: translate(-13px, -180%);
+  text-align: center;
+  border-radius: 6px;
+  opacity: 0;
+  transition: background-color 0.1s;
+}
+
+*:hover > .tooltip {
+  opacity: 1;
+}
+
+.tooltip:after,
+.tooltip:before {
+  top: 100%;
+  left: 50%;
+  border: solid transparent;
+  content: ' ';
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.toast {
+  width: 200px !important;
+  box-shadow: none !important;
+  margin-bottom: 12px !important;
+  padding: 10px !important;
+  font-size: 12px !important;
+  background-image: none !important;
+  border-radius: 6px !important;
+  text-align: center !important;
+}
+
+.announcementToast {
+  width: 400px !important;
+  box-shadow: 0 0 800px #292929 !important;
+  margin-bottom: 12px !important;
+  padding: 20px 40px !important;
+  background-image: none !important;
+  border-radius: 6px !important;
+  max-height: 90vh;
+  overflow-y: scroll !important;
+  overflow-x: hidden !important;
+  scrollbar-width: thin;
+  scrollbar-color: rgb(168, 168, 168) rgba(223, 223, 223, 0);
+}
+
+.announcementToast::-webkit-scrollbar {
+  width: 11px;
+}
+
+.announcementToast::-webkit-scrollbar-track {
+  background: rgba(218, 218, 218, 0);
+}
+
+.announcementToast::-webkit-scrollbar-thumb {
+  background-color: rgb(173, 173, 173);
+  border-radius: 6px;
+  border: 3px solid rgba(221, 221, 221, 0);
+}
+
+.announcementToast hr {
+  border: 1px solid black;
+  opacity: 0.15;
+  margin: 30px 0px;
+}
+
+.announcementToast .toast-close-button {
+  margin-top: 20px;
+  font-size: 1.5em;
+}
+
+.announcementToast b {
+  line-height: 30px;
+}
+
+.announcementToast a:hover {
+  color: white !important;
+}
+
+.errorToast {
+  background-color: var(--error-toast-bg) !important;
+}
+
+.successToast {
+  background-color: var(--success-toast-bg) !important;
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .contentContainer {
+    width: 100vw !important;
+    min-width: 80vw !important;
+    margin-bottom: 20px !important;
+  }
+
+  app-planning {
+    display: flex;
+    flex-direction: column;
+  }
+
+  app-planning > * {
+    width: 90vw !important;
+    padding-left: 5vw;
+  }
+
+  div.modalBox {
+    max-width: 98vw;
+  }
+
+  .title {
+    padding-top: 20px !important;
+    order: 1;
+  }
+
+  .classList {
+    order: 3;
+  }
+
+  app-planning .classObject.placeholder {
+    height: 60px !important;
+    padding: 15px !important;
+  }
+
+  app-planning .selectWrap {
+    margin-bottom: 25px !important;
+  }
+
+  app-planning .semesterSelect,
+  app-planning .campusSelect,
+  app-planning .deliveryModeSelect {
+    font-size: 10px !important;
+    left: 0 !important;
+    margin-right: 0 !important;
+    float: right !important;
+    margin-left: 15px !important;
+  }
+
+  app-planning .line {
+    width: 99% !important;
+  }
+
+  app-planning .line.before {
+    display: none !important;
+  }
+
+  app-planning .line.after {
+    display: block !important;
+    clear: both !important;
+    padding-top: 7px !important;
+  }
+
+  app-planning .selectionWrapper {
+    display: none !important;
+  }
+
+  .topMenu {
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+  }
+
+  .timetableList {
+    width: auto !important;
+  }
+
+  app-timetable {
+    padding-left: 12px !important;
+    width: 95vw !important;
+    order: 2;
+  }
+
+  .calendarColumnContainer {
+    margin-top: 5px !important;
+    height: 685px !important;
+  }
+
+  .dayColumn {
+    height: 635px !important;
+  }
+
+  .timeLabels {
+    left: -12px !important;
+    height: 655px !important;
+  }
+
+  .dayHeader {
+    font-size: 12px !important;
+  }
+
+  .timestamp {
+    font-size: 9px !important;
+  }
+
+  .scheduledClass {
+    padding-top: 4px !important;
+    padding-left: 4px !important;
+  }
+
+  .scheduledClass > p {
+    font-size: 11px !important;
+    line-height: 13px !important;
+  }
+
+  app-theme {
+    bottom: 42px !important;
+  }
+
+  footer {
+    margin-top: 50px !important;
+  }
+
+  app-install {
+    display: block !important;
+  }
+
+  footer .textWrap {
+    width: 80vw !important;
+    margin-left: 10vw !important;
+  }
+}

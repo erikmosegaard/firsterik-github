@@ -1,0 +1,61 @@
+<div class='topMenu'>
+    <div class='timetableList'>
+        <button
+            class='timetableBtn planBtn'
+            *ngFor='let p of this.plans'
+            (click)='this.handleTimetableClicked(p.id)'
+            [class.active]='p.id == this.plan.id'
+        >
+            {{this.getPlanName(p.id)}}
+        </button>
+        <button class='timetableBtn addCalBtn' title='Create timetable'
+            (click)='this.newTimetableHandler()' [class.active]='this.plan.classes.length > 0'>
+            <fa-icon [icon]='faPlus'></fa-icon>
+        </button>
+    </div>
+    <div class='controls'>
+        <button class='controlBtn saveBtn' title='Save timetable'
+            (click)='this.handleSaveClicked()' [class.active]='this.plan.isDirty'>
+            <fa-icon [icon]='faSave'></fa-icon>
+        </button>
+
+        <button class='controlBtn exportBtn' title='Export as iCal'
+        (click)='this.exportCalendar()' [class.active]='this.plan.classes.length > 0'>
+            <fa-icon [icon]='faDownload'></fa-icon>
+        </button>
+        <button class='controlBtn deleteBtn' title='Delete this timetable'
+            (click)='this.handleDeleteClicked()' [class.active]='this.plans.length > 1 || this.plan.classes.length > 0'>
+            <fa-icon [icon]='faTrash'></fa-icon>
+        </button>
+    </div>
+</div>
+  
+<div class='calendarColumnContainer'>
+    <div *ngFor='let day of this.weekdayIndices' class='calendarColumn'>
+        <div 
+            *ngIf='day == 0'
+            class='timeLabels'
+        >
+            <p class='timestamp' *ngFor='let hour of this.timetableHours'>{{hour | time}}</p>
+            <p class='timestamp'></p>
+        </div>
+        <p class='dayHeader'>{{this.weekdays[day]}}</p>
+        <app-timetable-day
+            [sessionList]='this.getSessionsOnDay(day)'
+            [editing]='this.editing'
+            [editingClassName]='this.editingClassName'
+            [editingClassType]='this.editingClassType'
+            [hoverStream]='this.hoverStream'
+            [selections]='this.plan.selections'
+            [week]='this.week'
+            (sessionClick)='this.handleSessionClicked($event)'
+            (sessionEnter)='this.handleSessionEnter($event)'
+            (sessionLeave)='this.handleSessionLeave($event)'
+            (blockClick)='this.handleBlockClicked()'
+        >
+        </app-timetable-day>
+    </div>
+</div>
+<app-weeks
+    (weekChanged)='this.setWeek($event)'
+></app-weeks>

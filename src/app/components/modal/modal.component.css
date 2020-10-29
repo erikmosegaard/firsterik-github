@@ -1,0 +1,64 @@
+div.modalShade {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0);
+    transition: background-color 0.1s;
+}
+
+div.modalShade.isActive {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+div.modalBox {
+    box-sizing: border-box;
+    padding: 20px 35px;
+    position: relative;
+    max-width: 400px;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
+    border: 1px solid var(--accent-color);
+    background-color: var(--modal-bg);
+    color: var(--class-list-color);
+    font-family: 'Lato', Arial, sans-serif;
+}
+
+p.modalHeading {
+    font-size: 19px;
+    font-weight: 500;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.modalText {
+    font-size: 13px;
+}
+
+div.modalButtonContainer {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+}
+
+button.modalButton,
+        button.closeButton:active,
+        button.closeButton:focus {
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    border: none;
+    background: transparent;
+    outline: none;
+    font-family: 'Lato', Arial, sans-serif;
+    color: var(--class-list-color);
+    margin-left: 5px;
+    transition: filter 0.4s;
+}
+
+button.modalButton:hover {
+    filter: brightness(0.7);
+}
